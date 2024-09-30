@@ -8141,7 +8141,7 @@ Python Version: 3.11.10
 <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'apartment_database.db'</span><span class="p">)</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
-<span class="c1"># SQL-Abfrage zur Berechnung des Durchschnittspreises pro Raumgröße</span>
+<span class="c1"># SQL-Abfrage zur Berechnung des Durchschnittspreises pro Raumgrösse</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s1">'''</span>
 <span class="s1">SELECT rooms, AVG(price) AS avg_price</span>
 <span class="s1">FROM apartments_table</span>
@@ -8157,7 +8157,7 @@ Python Version: 3.11.10
 
 <span class="nb">print</span><span class="p">(</span><span class="n">avg_price_df</span><span class="p">[[</span><span class="s1">'Rooms'</span><span class="p">,</span> <span class="s1">'Average Price'</span><span class="p">]])</span>
 
-<span class="c1"># Verbindung schließen</span>
+<span class="c1"># DB schliessen</span>
 <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -8202,27 +8202,25 @@ Python Version: 3.11.10
 <div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Verbindung zur Datenbank herstellen</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'apartment_database.db'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'apartment_database.db'</span><span class="p">)</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
-<span class="c1"># SQL-Abfrage zur Berechnung der durchschnittlichen Fläche pro Raumgröße</span>
+<span class="c1"># SQL-Abfrage zur Berechnung der durchschnittlichen Fläche pro Raumgrösse</span>
 <span class="n">query_area</span> <span class="o">=</span> <span class="s1">'''</span>
 <span class="s1">SELECT rooms, AVG(area) AS avg_area</span>
 <span class="s1">FROM apartments_table</span>
 <span class="s1">GROUP BY rooms</span>
 <span class="s1">'''</span>
 
-<span class="c1"># Ausführen der Abfrage</span>
+
 <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_area</span><span class="p">)</span>
 
-<span class="c1"># Ergebnisse abrufen und in ein DataFrame umwandeln</span>
 <span class="n">avg_area_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Rooms'</span><span class="p">,</span> <span class="s1">'Average Area'</span><span class="p">])</span>
 
-<span class="c1"># DataFrame anzeigen (nur zwei Spalten)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">avg_area_df</span><span class="p">[[</span><span class="s1">'Rooms'</span><span class="p">,</span> <span class="s1">'Average Area'</span><span class="p">]])</span>
 
-<span class="c1"># Verbindung schließen</span>
+
 <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
